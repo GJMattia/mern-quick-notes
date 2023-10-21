@@ -3,7 +3,7 @@ const BASE_URL = '/api/notes';
 
 export async function getAll() {
     return sendRequest(BASE_URL);
-}
+};
 
 export async function createNote(noteData) {
     try {
@@ -11,13 +11,13 @@ export async function createNote(noteData) {
     } catch (error) {
         console.error('Error creating note:', error);
     }
-}
+};
 
 export async function deleteNote(noteID) {
     try {
-        console.log(noteID)
         await sendRequest(`${BASE_URL}/${noteID}`, 'DELETE');
     } catch (error) {
         console.error('error deleting note:', error);
     }
-}
+};
+

@@ -3,7 +3,7 @@ const Note = require('../../models/note');
 module.exports = {
     index,
     create,
-    delete: deleteNote
+    delete: deleteNote,
 };
 
 async function deleteNote(req, res) {
@@ -34,7 +34,8 @@ async function create(req, res) {
 
 async function index(req, res) {
     try {
-        const notes = await Note.find({});
+        const userID = req.user._id;
+        const notes = await Note.find({ user: userID });
         res.json(notes);
     } catch (error) {
         console.error('Error fetching notes', error);

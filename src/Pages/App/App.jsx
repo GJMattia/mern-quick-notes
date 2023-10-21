@@ -10,7 +10,6 @@ import Home from '../../Pages/Home/Home'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  console.log('hello')
   return (
     <main className="App">
       {user ?
@@ -18,7 +17,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path="/notes" element={<Notes />} />
+            <Route path="/notes" element={<Notes user={user} />} />
           </Routes>
         </>
         :

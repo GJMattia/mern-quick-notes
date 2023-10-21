@@ -5,7 +5,7 @@ import NoteList from '../../Components/NoteList/NoteList.jsx'
 
 
 
-export default function Notes() {
+export default function Notes({ user }) {
 
     const [input, setInput] = useState('');
     const [notes, setNotes] = useState([]);
@@ -13,9 +13,8 @@ export default function Notes() {
     useEffect(function () {
         async function getNotes() {
             try {
-                const notes = await notesAPI.getAll();
+                const notes = await notesAPI.getAll({ user: user._id });
                 setNotes(notes);
-                console.log(notes);
             } catch (error) {
                 console.error('Error fetching notes:', error);
             }
@@ -29,7 +28,7 @@ export default function Notes() {
 
     async function addNote() {
         try {
-            await notesAPI.createNote({ name: input });
+            await notesAPI.createNote({ name: input, user: user._id });
             setInput('')
             const updatedNotes = await notesAPI.getAll();
             setNotes(updatedNotes);

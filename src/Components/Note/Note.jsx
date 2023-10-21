@@ -14,8 +14,8 @@ export default function Note({ note, index, setNotes }) {
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     };
 
+
     async function handleDelete() {
-        console.log(note._id)
         await notesAPI.deleteNote(note._id);
         const updatedNotes = await notesAPI.getAll();
         setNotes(updatedNotes);

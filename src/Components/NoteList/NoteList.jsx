@@ -9,7 +9,11 @@ export default function NoteList({ notes, setNotes }) {
 
     return (
         <ul className='NoteList'>
-            {Notes}
+            {Notes.length === 0 ? (
+                <li>There are currently no notes!</li>
+            ) : (
+                Notes
+            )}
         </ul>
     )
 }
